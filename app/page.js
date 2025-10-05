@@ -92,8 +92,8 @@ export default function Page() {
 	const { bpm, setBpm, isRunning, start, stop, subdivision, setSubdivision } = useMetronome();
 
 	return (
-		<div className="min-h-dvh grid place-items-center p-4 bg-gradient-to-b from-base-200 to-base-300">
-			<div className="w-full max-w-md card bg-base-100 shadow-2xl">
+		<div className="min-h-dvh grid place-items-center p-6">
+			<div className="w-full max-w-xl card bg-base-100 shadow-xl">
 				<div className="card-body">
 					<h1 className="card-title text-3xl">Metro Sound • Golf</h1>
 					<p className="opacity-70 text-sm">1–2–3 beeps with pre/post silence for putting flow</p>

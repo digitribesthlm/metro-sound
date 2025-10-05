@@ -189,9 +189,8 @@ const pattern = useMemo(() => ({ accentIndex: 0 }), []);
 
 			<p className="text-sm opacity-70">Cycle: pre-silence → beeps (accent on first) → post-silence → repeat</p>
 
-			<div className="h-16" />
-			<div className="btm-nav btm-nav-sm md:btm-nav">
-				<button onClick={isRunning ? stop : start} className={`btn btn-primary w-full ${isRunning ? 'btn-error' : 'btn-primary'}`}>
+			<div className="mt-2">
+				<button onClick={isRunning ? stop : start} className={`btn ${isRunning ? 'btn-error' : 'btn-primary'} w-full`}>
 					{isRunning ? 'Stop' : 'Start'}
 				</button>
 			</div>
