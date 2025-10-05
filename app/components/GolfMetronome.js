@@ -142,37 +142,56 @@ const pattern = useMemo(() => ({ accentIndex: 0 }), []);
 	const maxBpm = 120;
 
 	return (
-		<div style={{ display: 'grid', gap: 16 }}>
-			<label style={{ display: 'grid', gap: 8 }}>
-				<span>BPM: {bpm} <span style={{ opacity: 0.7 }}>({bpmHint})</span></span>
-				<input type="range" min={minBpm} max={maxBpm} step="1" value={bpm} onChange={(e) => setBpm(Number(e.target.value))} style={{ width: '100%' }} />
+		<div className="grid gap-6">
+			<h2 className="text-lg font-semibold">Tempo</h2>
+			<label className="form-control w-full">
+				<div className="label">
+					<span className="label-text">BPM</span>
+					<span className="label-text-alt opacity-70">{bpmHint}</span>
+				</div>
+				<input type="range" min={minBpm} max={maxBpm} step="1" value={bpm} onChange={(e) => setBpm(Number(e.target.value))} className="range range-primary" />
+				<div className="text-right text-sm opacity-70 mt-1">{bpm}</div>
 			</label>
 
-			<div style={{ display: 'grid', gap: 12 }}>
-				<label style={{ display: 'grid', gap: 6 }}>
-					<span>Beeps per cycle: {beepsPerCycle}</span>
-					<input type="range" min="1" max="8" step="1" value={beepsPerCycle} onChange={(e) => setBeepsPerCycle(Number(e.target.value))} />
+			<h2 className="text-lg font-semibold mt-2">Cycle</h2>
+			<div className="grid gap-4">
+				<label className="form-control w-full">
+					<div className="label">
+						<span className="label-text">Beeps per cycle</span>
+					</div>
+					<input type="range" min="1" max="8" step="1" value={beepsPerCycle} onChange={(e) => setBeepsPerCycle(Number(e.target.value))} className="range range-secondary" />
+					<div className="text-right text-sm opacity-70 mt-1">{beepsPerCycle}</div>
 				</label>
-				<div style={{ display: 'flex', gap: 12 }}>
-					<label style={{ display: 'grid', gap: 6, flex: 1 }}>
-						<span>Pre-silence (beats): {preSilenceBeats}</span>
-						<input type="range" min="0" max="8" step="1" value={preSilenceBeats} onChange={(e) => setPreSilenceBeats(Number(e.target.value))} />
+				<div className="grid grid-cols-2 gap-4">
+					<label className="form-control">
+						<div className="label">
+							<span className="label-text">Pre-silence (beats)</span>
+						</div>
+						<input type="range" min="0" max="8" step="1" value={preSilenceBeats} onChange={(e) => setPreSilenceBeats(Number(e.target.value))} className="range range-accent" />
+						<div className="text-right text-sm opacity-70 mt-1">{preSilenceBeats}</div>
 					</label>
-					<label style={{ display: 'grid', gap: 6, flex: 1 }}>
-						<span>Post-silence (beats): {postSilenceBeats}</span>
-						<input type="range" min="0" max="8" step="1" value={postSilenceBeats} onChange={(e) => setPostSilenceBeats(Number(e.target.value))} />
+					<label className="form-control">
+						<div className="label">
+							<span className="label-text">Post-silence (beats)</span>
+						</div>
+						<input type="range" min="0" max="8" step="1" value={postSilenceBeats} onChange={(e) => setPostSilenceBeats(Number(e.target.value))} className="range range-accent" />
+						<div className="text-right text-sm opacity-70 mt-1">{postSilenceBeats}</div>
 					</label>
 				</div>
-				<label style={{ display: 'grid', gap: 6, flex: 1 }}>
-					<span>Visualization beats per bar: {subdivision}</span>
-					<input type="range" min="1" max="12" step="1" value={subdivision} onChange={(e) => setSubdivision(Number(e.target.value))} />
+				<label className="form-control w-full">
+					<div className="label">
+						<span className="label-text">Visualization beats per bar</span>
+					</div>
+					<input type="range" min="1" max="12" step="1" value={subdivision} onChange={(e) => setSubdivision(Number(e.target.value))} className="range range-info" />
+					<div className="text-right text-sm opacity-70 mt-1">{subdivision}</div>
 				</label>
 			</div>
 
-			<div style={{ opacity: 0.8 }}>Cycle: pre-silence → beeps (accent on first) → post-silence → repeat</div>
+			<p className="text-sm opacity-70">Cycle: pre-silence → beeps (accent on first) → post-silence → repeat</p>
 
-			<div style={{ display: 'flex', gap: 12 }}>
-				<button onClick={isRunning ? stop : start} style={{ flex: 1, padding: '12px 16px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.12)', background: isRunning ? '#c62828' : '#1b5e20', color: 'white', cursor: 'pointer' }}>
+			<div className="h-16" />
+			<div className="btm-nav btm-nav-sm md:btm-nav">
+				<button onClick={isRunning ? stop : start} className={`btn btn-primary w-full ${isRunning ? 'btn-error' : 'btn-primary'}`}>
 					{isRunning ? 'Stop' : 'Start'}
 				</button>
 			</div>

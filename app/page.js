@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import GolfMetronome from './components/GolfMetronome';
+import './globals.css';
 
 function useMetronome() {
 	const audioContextRef = useRef(null);
@@ -91,13 +92,14 @@ export default function Page() {
 	const { bpm, setBpm, isRunning, start, stop, subdivision, setSubdivision } = useMetronome();
 
 	return (
-		<div style={{ display: 'grid', minHeight: '100vh', placeItems: 'center', background: '#0b1020', color: 'white' }}>
-			<div style={{ width: 'min(92vw, 560px)', padding: 24, borderRadius: 16, background: '#101935', boxShadow: '0 10px 30px rgba(0,0,0,0.35)' }}>
-				<h1 style={{ marginTop: 0, marginBottom: 8, fontSize: 28 }}>Metro Sound • Golf</h1>
-				<p style={{ marginTop: 0, opacity: 0.8 }}>3:1 (Full Swing) and 2:1 (Putt) modes</p>
-
-				<div style={{ display: 'grid', gap: 16, marginTop: 24 }}>
-					<GolfMetronome />
+		<div className="min-h-dvh grid place-items-center p-4 bg-gradient-to-b from-base-200 to-base-300">
+			<div className="w-full max-w-md card bg-base-100 shadow-2xl">
+				<div className="card-body">
+					<h1 className="card-title text-3xl">Metro Sound • Golf</h1>
+					<p className="opacity-70 text-sm">1–2–3 beeps with pre/post silence for putting flow</p>
+					<div className="mt-2">
+						<GolfMetronome />
+					</div>
 				</div>
 			</div>
 		</div>
